@@ -1,4 +1,25 @@
-let books = [];
+let books = [
+    
+        {
+            id_book:1,
+            id_user:5,
+            title:'Don Quijote de la Mancha',
+            type:'Tapa dura',
+            author:'Miguel de Cervantes',
+            price:12.99,
+            photo:'https://images-na.ssl-images-amazon.com/images/I/71fRMTejbyL.jpg',
+          },
+          {
+            id_book:2,
+            id_user:10,
+            title:'Cinco semanas en globo',
+            type:'Tapa dura',
+            author:'Julio Verne',
+            price:19.99,
+            photo:'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Cinq_Semaines_en_ballon_001.png/800px-Cinq_Semaines_en_ballon_001.png',
+          },
+    
+];
 
 function welcome(req, res) {
     res.send('Welcome to the Server');
