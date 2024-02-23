@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>POKEMONS</title>
+</head>
+<body>
+    <section class="container">
+        <form class="form">
+            <div class="field">
+                <label for="id">Id:</label>
+                <input type="number" id="id">
+            </div>    
+            <div class="field">
+                <label for="name">Name:</label>
+                <input type="text" id="name">
+            </div>    
+            <div class="button"> 
+                <div class="button_container">
+                    <button class="btn" type="button" id="pokemon">Pokemon</button>
+                </div>
+            </div>   
+        </form>
+
+        <article class="card"> 
+            <img class="card_image" src="https://w7.pngwing.com/pngs/248/960/png-transparent-pikachu-pokemon-go-silhouette-drawing-pikachu-dog-like-mammal-fictional-character-black.png" alt="imagen de la tarjeta" id="image">
+            <h2 class="card_titulo" id="nombre"> Sin Pokemones...</h2>
+            
+        </article>
+    </section>
+    <div class="container" id="table">
+        <table id="abilitiesTable">
+
+        </table>
+    </div>
+
+    <script type="module" src="fetch.js"></script>
+</body>
+</html>
