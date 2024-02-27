@@ -13,7 +13,7 @@ function getBook (req , res) {
     } else {
         response = { error: true, code: 200, menssage: 'No existe el Libro' } 
     }
-    req.send(response);
+    res.send(response);
 }
 
 function getBookParams(req, res) {
@@ -36,9 +36,10 @@ function getBookParams(req, res) {
 function createBook (req, res) {
 
     let response;
-
+    console.log(req.body);
     if (!book) {
         book = req.body;
+        console.log(book);
         response = { error: false, code: 200, message: 'Libro creado Correctamente', book }
     } else {
         response = { error: true, code: 200, message: 'El Libro ya existe' }
@@ -50,7 +51,7 @@ function createBook (req, res) {
 function updateBook (req, res) {
 
     let response;
-
+console.log(req.body);
     if (book) {
         book = {
             ...book,

@@ -58,16 +58,19 @@ function updateBook(req, res) {
     }
 }
 
-function deleteBook(req, res) {
-    const bookId = parseInt(req.query.id);
-    const foundBookIndex = books.findIndex(book => book.id_book === bookId);
 
-    if (foundBookIndex !== -1) {
-        const deletedBook = books.splice(foundBookIndex, 1);
-        res.send({ error: false, code: 200, message: 'Libro eliminado', book: deletedBook });
+function deleteBook (req, res) {
+
+    let response;
+
+    if (books) {
+        books = null;
+        response = { error: false, code: 200, message: 'Usuario eliminado correctamente' }
     } else {
-        res.status(404).send({ error: true, code: 404, message: 'Libro no encontrado' });
+        response = { error: true, code: 200, message: 'El usuario no existe' }
     }
+
+    res.send(response)
 }
 
 module.exports = {
