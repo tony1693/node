@@ -37,6 +37,11 @@ function getBookById(req, res) {
 }
 
 function getAllBooks(req, res) {
+    const bookId = parseInt(req.query.id);
+    if (bookId) {
+        const foundBook = books.find(book => book.id_book === bookId);
+        res.send(foundBook);
+    } 
     res.send(books);
 }
 
@@ -51,27 +56,28 @@ function updateBook(req, res) {
     const foundBookIndex = books.findIndex(book => book.id_book === bookId);
 
     if (foundBookIndex !== -1) {
-        books[foundBookIndex] = { ...books[foundBookIndex], ...req.body };
-        res.send({ error: false, code: 200, message: 'Libro Actualizado', book: books[foundBookIndex] });
+        const updatedBook = { ...books[foundBookIndex], ...req.body };
+        books[foundBookIndex] = updatedBook;
+        res.send({ error: false, code: 200, message: 'Libro Actualizado', book: updatedBook });
     } else {
         res.status(404).send({ error: true, code: 404, message: 'Libro no Encontrado' });
     }
 }
 
 
-function deleteBook (req, res) {
 
-    let response;
+function deleteBook(req, res) {
+    const bookId = parseInt(req.query.id);
+    const foundBookIndex = books.findIndex(book => book.id_book === bookId);
 
-    if (books) {
-        books = null;
-        response = { error: false, code: 200, message: 'Usuario eliminado correctamente' }
+    if (foundBookIndex !== -1) {
+        const deletedBook = books.splice(foundBookIndex, 1);
+        res.send({ error: false, code: 200, message: 'Libro eliminado correctamente', deletedBook });
     } else {
-        response = { error: true, code: 200, message: 'El usuario no existe' }
+        res.status(404).send({ error: true, code: 404, message: 'Libro no encontrado' });
     }
-
-    res.send(response)
 }
+
 
 module.exports = {
     welcome,
